@@ -1,9 +1,9 @@
 const SLICE_COUNT = 10;
 
 function setup_pScope(pScope){
-  pScope.output_mode(STATIC_FRAME);
+  pScope.output_mode(ANIMATED_FRAME);
   pScope.scale_for_screen(true);
-  pScope.draw_layer_boundaries(true);
+  pScope.draw_layer_boundaries(false);
   pScope.set_direction(CCW);
   pScope.set_slice_count(SLICE_COUNT);
 }
@@ -24,22 +24,50 @@ function setup_layers(pScope){
   layer3.mode(SWIRL(3));
   layer3.set_boundary(0,400);
 
-  //var layer4 = new PLayer(tree);
-  //layer4.mode(RING)
-  //layer4.set_boundary(0, 200)
+  var layer4 = new PLayer(tree);
+  layer4.mode(RING)
+  layer4.set_boundary(0, 200)
+  
+  var layer5 = new PLayer(waves);
+  layer5.mode(SWIRL);
+  layer5.set_boundary(200,1000);
 
 }
 
 function swimmer(x, y, animation, pScope){
   
-  fill(67, 97, 181)
-  ellipse(0,45,20,80)
-  ellipse(0,5,60,100)
+  fill(67, 97, 181)   //blue
+  ellipse(0,45,20,80) //wake
+  ellipse(0,5,60,100) //wake
   
-  fill(63, 191, 8)
-  ellipse(0,40,10,70)
-  ellipse(0,0,50,90);
+  fill(186, 240, 185)  //light green
+  ellipse(0,40,10,70)  //tail
+  fill(63, 191, 8)     //green
+  ellipse(0,0,50,90);  //body
 
+  fill(186, 240, 185)  //scales
+  arc(0,0,50,90,337.5,202.5,OPEN)
+
+  rect(5,-10,10,10)
+  rect(15,-10,10,10)
+  rect(-5,-10,10,10)
+  rect(-15,-10,10,10)
+  rect(-25,-10,10,10)
+
+  rect(0,0,10,10)  
+  rect(10,0,10,10)
+  rect(-10,0,10,10)
+  rect(-20,0,10,10)
+
+  rect(-5,10,10,10)
+  rect(5,10,10,10)
+  rect(-15,10,10,10)
+
+  rect(0,20,10,10)
+  rect(-10,20,10,10)
+
+  rect(-5,30,10,10)
+  
 }
 
 function beach(x, y, animation, pScope){
@@ -61,13 +89,33 @@ function crawler(x, y, animation, pScope){
   fill(63, 191, 8)  //green
   ellipse(0,-10,80,20) //front legs
   ellipse(0,20,80,20)  //back legs
+  fill(186, 240, 185)  //light green
   ellipse(0,40,10,70)  //tail
+  fill(63, 191, 8)     //green
   ellipse(0,0,50,90)   //body
+  
+  fill(186, 240, 185)  //scales
+  arc(0,0,50,90,337.5,202.5,OPEN)
 
-  fill(186, 240, 185)
-  rect(0,0,10,10)  //scales
+  rect(5,-10,10,10)
+  rect(15,-10,10,10)
+  rect(-5,-10,10,10)
+  rect(-15,-10,10,10)
+  rect(-25,-10,10,10)
+
+  rect(0,0,10,10)  
+  rect(10,0,10,10)
+  rect(-10,0,10,10)
+  rect(-20,0,10,10)
+
   rect(-5,10,10,10)
   rect(5,10,10,10)
+  rect(-15,10,10,10)
+
+  rect(0,20,10,10)
+  rect(-10,20,10,10)
+
+  rect(-5,30,10,10)
 
 }
 
@@ -85,3 +133,14 @@ function tree(x, y, animation, pScope){
 }
 
 
+function waves(x,y,animation,pScope){
+
+  fill(53, 202, 222)
+  stroke(51, 81, 158)
+  strokeWeight(3)
+  arc(80,20,50,10,180,0)
+  arc(130,20,50,10,0,180)
+
+
+
+}
