@@ -1,7 +1,7 @@
 const SLICE_COUNT = 10;
 
 function setup_pScope(pScope){
-  pScope.output_mode(ANIMATED_FRAME);
+  pScope.output_mode(ANIMATED_DISK);
   pScope.scale_for_screen(true);
   pScope.draw_layer_boundaries(false);
   pScope.set_direction(CCW);
@@ -10,14 +10,18 @@ function setup_pScope(pScope){
 
 function setup_layers(pScope){
 
-  new PLayer(null, 53, 202, 222);  //lets us draw the whole circle background, ignoring the boundaries
+  new PLayer(null, 53, 202, 222);  //
 
   var layer1 = new PLayer(swimmer);
   layer1.mode( SWIRL(4) );
   layer1.set_boundary( 200, 1000 );
 
+  var layer5 = new PLayer(waves);
+  layer5.mode(SWIRL(5));
+  layer5.set_boundary(300,1000);
+
   var layer2 = new PLayer(beach);
-  layer2.mode( RING );
+  layer2.mode(RING);
   layer2.set_boundary( 0, 400 );
 
   var layer3 = new PLayer(crawler);
@@ -28,9 +32,7 @@ function setup_layers(pScope){
   layer4.mode(RING)
   layer4.set_boundary(0, 200)
   
-  var layer5 = new PLayer(waves);
-  layer5.mode(SWIRL);
-  layer5.set_boundary(200,1000);
+
 
 }
 
@@ -121,26 +123,28 @@ function crawler(x, y, animation, pScope){
 
 function tree(x, y, animation, pScope){
 
-  // this is how you set up a background for a specific layer
   let angleOffset = (360 / SLICE_COUNT) / 2
   let backgroundArcStart = 270 - angleOffset;
   let backgroundArcEnd = 270 + angleOffset;
   
   fill(152, 250, 110)
-  arc(x,y,100,400,backgroundArcStart,backgroundArcEnd); // draws "pizza slice" in the background
-
+  arc(x,y,100,400,backgroundArcStart,backgroundArcEnd); //palm leaves
   
 }
 
 
 function waves(x,y,animation,pScope){
 
-  fill(53, 202, 222)
+  fill(53, 202, 222) //blue
   stroke(51, 81, 158)
   strokeWeight(3)
+
   arc(80,20,50,10,180,0)
   arc(130,20,50,10,0,180)
+  arc(180,20,50,10,180,0)
 
-
+  arc(-80,70,50,10,180,0)
+  arc(-130,70,50,10,0,180)
 
 }
+
