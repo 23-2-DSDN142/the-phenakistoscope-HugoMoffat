@@ -6,11 +6,15 @@ function setup_pScope(pScope){
   pScope.draw_layer_boundaries(false);
   pScope.set_direction(CCW);
   pScope.set_slice_count(SLICE_COUNT);
+
+  pScope.load_image("one_tenth","png")
 }
 
 function setup_layers(pScope){
 
   new PLayer(null, 53, 202, 222);  //
+  
+
 
   var layer1 = new PLayer(swimmer);
   layer1.mode( SWIRL(4) );
@@ -32,7 +36,9 @@ function setup_layers(pScope){
   layer4.mode(RING)
   layer4.set_boundary(0, 200)
   
-
+  var layer6 = new PLayer(fish)
+  layer6.mode(RING)
+  layer6.set_boundary(0,1000)
 
 }
 
@@ -148,3 +154,9 @@ function waves(x,y,animation,pScope){
 
 }
 
+function fish(x,y,animation,pScope){
+  
+  scale(1.8)
+  pScope.draw_image("one_tenth",0,500)
+
+}
