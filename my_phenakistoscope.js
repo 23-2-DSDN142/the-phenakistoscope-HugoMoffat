@@ -8,6 +8,7 @@ function setup_pScope(pScope){
   pScope.set_slice_count(SLICE_COUNT);
 
   pScope.load_image("one_tenth","png")
+  pScope.load_image_sequence("Splash","png",7)
 }
 
 function setup_layers(pScope){
@@ -17,8 +18,8 @@ function setup_layers(pScope){
 
 
   var layer1 = new PLayer(swimmer);
-  layer1.mode( SWIRL(4) );
-  layer1.set_boundary( 200, 1000 );
+  layer1.mode( SWIRL(2) );
+  layer1.set_boundary( 600, 1000 );
 
   var layer5 = new PLayer(waves);
   layer5.mode(SWIRL(5));
@@ -39,6 +40,10 @@ function setup_layers(pScope){
   var layer6 = new PLayer(fish)
   layer6.mode(RING)
   layer6.set_boundary(0,1000)
+
+  var layer7 = new PLayer(splash)
+  layer7.mode(RING)
+  layer7.set_boundary(0,1000)
 
 }
 
@@ -90,8 +95,6 @@ function beach(x, y, animation, pScope){
 
 }
 
-
-
 function crawler(x, y, animation, pScope){
 
   fill(63, 191, 8)  //green
@@ -138,7 +141,6 @@ function tree(x, y, animation, pScope){
   
 }
 
-
 function waves(x,y,animation,pScope){
 
   fill(53, 202, 222) //blue
@@ -156,7 +158,14 @@ function waves(x,y,animation,pScope){
 
 function fish(x,y,animation,pScope){
   
-  scale(1.8)
-  pScope.draw_image("one_tenth",0,500)
+  scale(1.55)
+  pScope.draw_image("one_tenth",0,595)
+
+}
+
+function splash(x,yanimation,pScope){
+
+  scale(1)
+  pScope.draw_image_from_sequence("Splash", 0, 100, animation.frame);
 
 }
